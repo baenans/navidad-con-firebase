@@ -15,15 +15,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style>
       :host {
         display: block;
+        margin: 50px 60px;
+        min-height: 180px;
+        border-left: 4px solid #FFCA28;
+        text-align: left;
+        padding: 20px 20px 0px 20px;
+        /*box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
+      }
+
+      #title{
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 0px;
+      }
+      #date{
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #808080;
+      }
+
+      #wrapper{
+        display: flex;
+      }
+
+      #contenido{
+        display: block;
+        padding-left: 20px;
+      }
+      paper-button{
+        margin: 20px 0px;
+      }
+
+      a,
+      a:link,
+      a:active,
+      a:hover{
+        text-decoration: none;
+        font-weight: 500;
+        color: #FFA000;
       }
     </style>
 
-    <div>Fecha</div>
-    <div>
-      <span>Img</span>
-      <span>Texto</span>
+    <div id="wrapper">
+      <img src="[[bit.img]]">
+      <div id="contenido">
+        <div id="title">[[bit.titulo]]</div>
+        <div id="date">[[bit.fecha]]</div>
+        <div>[[bit.texto]]</div>
+      </div>
     </div>
-    <button>Call for action</button>
+    <a href="[[bit.link]]"><paper-button raised>Call for action</paper-button></a>
 
   </template>
 

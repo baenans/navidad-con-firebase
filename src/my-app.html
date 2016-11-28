@@ -21,6 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 
 <link rel="import" href="my-icons.html">
 <link rel="import" href="magic-queen.html">
@@ -60,6 +61,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: flex;
         text-align: center;
         flex-wrap: wrap;
+        margin: 0px auto;
+        max-width: 800px
       }
 
       .hashtag{
@@ -68,7 +71,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #c4as{
-        margin: 20px 0;
+        margin: 50px 0;
+      }
+      a,
+      a:link,
+      a:active,
+      a:hover{
+        color: #FFA000;
       }
 
       #c4as a,
@@ -77,17 +86,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       #c4as a:hover{
         text-decoration: none;
         font-size: 18px;
-        color: blue;
         font-weight: 500;
       }
 
       main{
         text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
       }
 
       footer{
         text-align: center;
         padding: 20px 150px;
+      }
+
+      #ss-nn{
+        margin: 20px auto;
+      }
+      #ss-nn a{
+        text-decoration: none;
+      }
+      #ss-nn img{
+        height: 40px;
+        margin:0px 5px;
       }
 
       @media all and (max-width: 800px){
@@ -110,10 +131,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
+    <firebase-app 
+      name="navidad-con-firebase"
+      database-url="https://navidad-con-firebase.firebaseio.com"
+      api-key="AIzaSyDvpi4o29dhIq5RkPWNriAv3N-Mvlv_rU0">
+    </firebase-app>
+
+    <firebase-query
+      app-name="navidad-con-firebase"
+      path="/kings"
+      data="{{kings}}">
+    </firebase-query>
+
+    <firebase-query
+      app-name="navidad-con-firebase"
+      path="/bits"
+      data="{{bits}}">
+    </firebase-query>
+
     <h1>Navidad con Firebase</h1>
     <header>
       <div>
-        (Hero image goes here)
+        [image goes here]
       </div>
 
       <p id="header-text">
@@ -159,16 +198,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           
       </template>
       
-
     </div>
 
     <footer>
       <p>
-        Comparte en tus redes sociales:<br><br>
-        (G+) | (Twitter) | (LinkedIn) | (Fracebook)
-      </p>
-
-      <div class="hashtag">#navidadconfirebase</div>
+        <div class="hashtag">#navidadconfirebase</div>
+        <div id="ss-nn">
+          <a href="https://plus.google.com/share?url=[[url]]" target=_blank rel="noopener">
+            <img alt="Google Plus" src="https://www.gstatic.com/images/icons/gplus-128.png">
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=[[url]]" target=_blank rel="noopener">
+            <img alt="Facebook" src="/images/facebook.png">
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=[[url]]&title=Navidad%20con%20Firebase&summary=Presta%20atenci%C3%B3n%20en%20diciembre%20para%20aprender%20Firebase%20con%20Carlos,%20Jeff,%20Paola%20y%20Kike%20%E2%80%93%20tus%20reyes%20m%C3%A1gicos%20del%20desarrollo." target=_blank rel="noopener">
+            <img alt="LinkedIn" src="/images/linkedin.png">
+          </a>
+          <a href="https://twitter.com/intent/tweet?text=[[url]]%20%23navidadconfirebase" target=_blank rel="noopener">
+            <img alt="Twitter" src="/images/twitter.png">
+          </a>
+      </div>
       
     </footer>
 
@@ -179,23 +227,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-app',
 
       properties: {
+        url:{
+          type: String,
+          value: 'navidad-con-firebase.es'
+        },
         bits: {
           type: Array,
           value: function(){
             return [
               {
-                fecha: 'bit1',
-                img: 'bit1.png',
+                titulo: 'Bit 2',
+                fecha: '2 de Diciembre, 2016',
+                img: 'http://lorempixel.com/200/160/sports/?t=2',
                 texto: 'bit1 texto blah bleh',
-                link: 'http://link-to-content.es',
-                anchor: ''
+                link: 'http://link-to-content.es'
               },
               {
-                fecha: 'bit1',
-                img: 'bit1.png',
+                titulo: 'Bienvenida',
+                fecha: '1 de Diciembre, 2016',
+                img: 'http://lorempixel.com/200/160/sports/?t=1',
                 texto: 'bit1 texto blah bleh',
-                link: 'http://link-to-content.es',
-                anchor: ''
+                link: 'http://link-to-content.es'
               }
             ];
           }
@@ -233,6 +285,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
       },
+
+      ready: function(){
+
+      }
 
     });
   </script>
