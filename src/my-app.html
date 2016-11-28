@@ -149,9 +149,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <h2>Los Reyes Mágicos</h2>
     <div id="magic-queens">
-      <magic-queen></magic-queen>
-      <magic-queen></magic-queen>
-      <magic-queen></magic-queen>
+      <template
+        is="dom-repeat"
+        items="[[kings]]"
+        as="king">
+
+        <magic-queen
+          data="[[king]]"></magic-queen>
+          
+      </template>
+      
+
     </div>
 
     <footer>
@@ -189,6 +197,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 link: 'http://link-to-content.es',
                 anchor: ''
               }
+            ];
+          }
+        },
+        kings: {
+          type: Array,
+          value: function(){
+            return [
+              {
+                nombre: 'Carlos Azaustre',
+                puesto: 'CTO en Chefly',
+                imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fcarlos-azaustre.jpg?alt=media&token=a316628d-7619-4091-af53-2950f6eb1bf1'
+              },
+              {
+                nombre: 'Jeff Arese',
+                puesto: 'Frontend Engineer en Wallapop',
+                imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fjeff-arese.jpg?alt=media&token=ed9fb0cb-74e0-43f8-af18-0d28a5054f2d'
+              },
+              {
+                nombre: 'Paola García',
+                puesto: 'CEO de Chefly',
+                imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fpaola-garcia.jpg?alt=media&token=55306826-118e-468e-84d8-53cc733f1f87'
+              },
+              {
+                nombre: 'Kike García',
+                puesto: '',
+                imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fkike-garcia.jpg?alt=media&token=a5f13310-c4d0-448c-ac91-87241aee93b5'
+              },
+              {
+                nombre: 'Gloria Bueno',
+                puesto: '',
+                imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fgloria-bueno.jpg?alt=media&token=cc62b294-42f0-496c-9e9e-0cbeb9392646'
+              },
             ];
           }
         }

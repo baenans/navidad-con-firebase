@@ -18,16 +18,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 10px auto;
       }
 
+      #name{
+        font-weight: 700;
+      }
+      #position{
+        font-style: italic;
+      }
+
       img{
         width: 140px;
         height: 140px;
         border-radius: 50%;
-        background-color: red;
       }
     </style>
 
-    <img></img>
-    <div>Name Surname</div>
+    <img src="[[data.imagen]]"></img>
+    <div id="name">[[data.nombre]]</div>
+    <div id="position">[[data.puesto]]</div>
     <div>Twitter, G+, Linkedin</div>
     
   </template>
