@@ -20,8 +20,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
+<link rel="import" href="my-icons.html">
 <link rel="import" href="magic-queen.html">
 <link rel="import" href="bit-element.html">
 
@@ -56,7 +57,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #magic-queens{
+        display: flex;
         text-align: center;
+        flex-wrap: wrap;
       }
 
       .hashtag{
@@ -68,6 +71,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 20px 0;
       }
 
+      #c4as a,
+      #c4as a:link,
+      #c4as a:active,
+      #c4as a:hover{
+        text-decoration: none;
+        font-size: 18px;
+        color: blue;
+        font-weight: 500;
+      }
+
       main{
         text-align: center;
       }
@@ -75,6 +88,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       footer{
         text-align: center;
         padding: 20px 150px;
+      }
+
+      @media all and (max-width: 800px){
+        h1{
+          font-size: 30px;
+          margin-top: 10px;
+        }
+
+        header{
+          text-align: center;
+          padding: 20px 60px;
+          font-size: 20px;
+          font-weight: 100; 
+        }
+
+        #magic-queens{
+          flex-flow: column;
+        }
       }
 
     </style>
@@ -86,11 +117,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
 
       <p id="header-text">
-        En diciembre estate atento para aprender Firebase con Carlos, Jeff, Paola y Kike – tus <i>reyes mágicos</i> del desarrollo.
+        Presta atención en diciembre para aprender Firebase con Carlos, Jeff, Paola y Kike – tus <i>reyes mágicos</i> del desarrollo.
       </p>
 
       <div id="c4as">
-        <button>C4A 1: regístrate en Firebase</button> <button>C4A 2: haz los codelabs</button>
+        <a href="https://g.co/firebase/bits">
+          <paper-button raised>Documentación</paper-button>
+        </a>
+        <a href="https://g.co/firebase/codelabs">
+          <paper-button raised>Codelabs</paper-button>
+        </a>
       </div>
 
       <div class="hashtag">#navidadconfirebase</div>
@@ -111,8 +147,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </main>
 
+    <h2>Los Reyes Mágicos</h2>
     <div id="magic-queens">
-      <h2>Los Reyes Mágicos</h2>
       <magic-queen></magic-queen>
       <magic-queen></magic-queen>
       <magic-queen></magic-queen>
