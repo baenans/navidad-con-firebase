@@ -22,6 +22,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
 
+<link rel="import" href="magic-queen.html">
+<link rel="import" href="bit-element.html">
+
 <dom-module id="my-app">
   <template>
     <style>
@@ -32,77 +35,99 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
       }
 
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
-
-      .drawer-list {
-        margin: 0 20px;
+      h1{
+        text-align: center;
+        font-size: 45px;
+        font-weight: 100;
+        margin-bottom: 0px;
       }
 
-      .drawer-list a {
-        display: block;
-
-        padding: 0 16px;
-
-        text-decoration: none;
-
-        color: var(--app-secondary-color);
-
-        line-height: 40px;
+      h2{
+        text-align: center;
+        font-weight: 100;
+        font-style: italic;
       }
 
-      .drawer-list a.iron-selected {
-        color: black;
-
-        font-weight: bold;
+      header{
+        text-align: center;
+        padding: 20px 150px;
+        font-size: 25px;
+        font-weight: 100; 
       }
+
+      #magic-queens{
+        text-align: center;
+      }
+
+      .hashtag{
+        font-size: 20px;
+        font-weight: 700
+      }
+
+      #c4as{
+        margin: 20px 0;
+      }
+
+      main{
+        text-align: center;
+      }
+
+      footer{
+        text-align: center;
+        padding: 20px 150px;
+      }
+
     </style>
 
-    <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+    <h1>Navidad con Firebase</h1>
+    <header>
+      <div>
+        (Hero image goes here)
+      </div>
 
-    <app-drawer-layout fullbleed>
-      <!-- Drawer content -->
-      <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
-        </iron-selector>
-      </app-drawer>
+      <p id="header-text">
+        En diciembre estate atento para aprender Firebase con Carlos, Jeff, Paola y Kike – tus <i>reyes mágicos</i> del desarrollo.
+      </p>
 
-      <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+      <div id="c4as">
+        <button>C4A 1: regístrate en Firebase</button> <button>C4A 2: haz los codelabs</button>
+      </div>
 
-        <app-header condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
-          </app-toolbar>
-        </app-header>
+      <div class="hashtag">#navidadconfirebase</div>
+    </header>
 
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>
-        </iron-pages>
-      </app-header-layout>
-    </app-drawer-layout>
+    <main>
+      <template 
+        is="dom-repeat"
+        items="[[bits]]"
+        as="bit">
+
+        <bit-element 
+          bit="[[bit]]">
+        </bit-element>
+      
+      </template>
+        
+
+    </main>
+
+    <div id="magic-queens">
+      <h2>Los Reyes Mágicos</h2>
+      <magic-queen></magic-queen>
+      <magic-queen></magic-queen>
+      <magic-queen></magic-queen>
+    </div>
+
+    <footer>
+      <p>
+        Comparte en tus redes sociales:<br><br>
+        (G+) | (Twitter) | (LinkedIn) | (Fracebook)
+      </p>
+
+      <div class="hashtag">#navidadconfirebase</div>
+      
+    </footer>
+
   </template>
 
   <script>
@@ -110,30 +135,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-app',
 
       properties: {
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
+        bits: {
+          type: Array,
+          value: function(){
+            return [
+              {
+                fecha: 'bit1',
+                img: 'bit1.png',
+                texto: 'bit1 texto blah bleh',
+                link: 'http://link-to-content.es',
+                anchor: ''
+              },
+              {
+                fecha: 'bit1',
+                img: 'bit1.png',
+                texto: 'bit1 texto blah bleh',
+                link: 'http://link-to-content.es',
+                anchor: ''
+              }
+            ];
+          }
         }
       },
 
-      observers: [
-        '_routePageChanged(routeData.page)'
-      ],
-
-      _routePageChanged: function(page) {
-        this.page = page || 'view1';
-      },
-
-      _pageChanged: function(page) {
-        // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
-        this.importHref(resolvedPageUrl, null, this._showPage404, true);
-      },
-
-      _showPage404: function() {
-        this.page = 'view404';
-      }
     });
   </script>
 </dom-module>
