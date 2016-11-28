@@ -54,10 +54,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 500;
         color: #FFA000;
       }
+
+      @media all and (max-width: 800px){
+
+        :host {
+          border-left: 0px;
+          border-top: 4px solid #FFCA28;
+          text-align: center;
+          padding: 20px 0px 0px 0px;
+        }
+
+        #wrapper{
+          flex-flow: column;
+        }
+
+        #contenido{
+          text-align: center;
+          padding-left: 0px;
+        }
+
+        img{
+          max-width: 100%;
+        }
+
+      
+      }
     </style>
 
     <div id="wrapper">
-      <img src="[[bit.img]]">
+      <div><img src="[[bit.img]]"></div>
       <div id="contenido">
         <div id="title">[[bit.titulo]]</div>
         <div id="date">[[bit.fecha]]</div>
