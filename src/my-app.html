@@ -21,7 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
 
 <link rel="import" href="my-icons.html">
 <link rel="import" href="magic-queen.html">
@@ -138,16 +139,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <firebase-app 
       name="navidad-con-firebase"
       database-url="https://navidad-con-firebase.firebaseio.com"
+      auth-domain="navidad-con-firebase.firebaseapp.com"
       api-key="AIzaSyDvpi4o29dhIq5RkPWNriAv3N-Mvlv_rU0">
     </firebase-app>
 
     <firebase-query
+      id="kings-query"
       app-name="navidad-con-firebase"
       path="/kings"
       data="{{kings}}">
     </firebase-query>
-
+    
     <firebase-query
+      id="bits-query"
       app-name="navidad-con-firebase"
       path="/bits"
       data="{{bits}}">
@@ -259,7 +263,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         kings: {
           type: Array,
           value: function(){
-            return [
+            return [] /*[
               {
                 nombre: 'Carlos Azaustre',
                 puesto: 'CTO en Chefly',
@@ -285,9 +289,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 puesto: '',
                 imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fgloria-bueno.jpg?alt=media&token=cc62b294-42f0-496c-9e9e-0cbeb9392646'
               },
-            ];
+            ];*/
           }
         }
+      },
+
+      observers: [
+        '_kingsChanged(kings.*)'
+
+      ],
+
+      _kingsChanged: function(o){
+        console.log(this.kings);
+
       },
 
       ready: function(){
