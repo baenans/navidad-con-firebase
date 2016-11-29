@@ -28,6 +28,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-size: 22px;
         margin-bottom: 0px;
       }
+
       #date{
         margin-bottom: 15px;
         font-style: italic;
@@ -41,6 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       #contenido{
         display: block;
         padding-left: 20px;
+        font-size: 14px;
       }
       paper-button{
         margin: 20px 0px;
@@ -54,6 +56,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 500;
         color: #FFA000;
       }
+
+      #image-holder{
+        vertical-align: baseline;
+      }
+
 
       @media all and (max-width: 800px){
 
@@ -76,13 +83,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         img{
           max-width: 100%;
         }
-
       
       }
     </style>
 
     <div id="wrapper">
-      <div><img src="[[bit.img]]"></div>
+      <div id="image-holder"><img src="[[bit.img]]"></div>
       <div id="contenido">
         <div id="title">[[bit.titulo]]</div>
         <div id="date">[[bit.fecha]]</div>
