@@ -1,22 +1,22 @@
 language: node_js
 sudo: required
 dist: trusty
+addons:
+  firefox: '46.0'
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 node_js:
   - '6'
-cache:
-  directories:
-    - node_modules
-branches:
-  except:
-    - /^v\d/
-install:
-  - npm install
-  - npm install -g bower
+before_script:
+  - npm install -g bower polymer-cli
   - bower install
 script:
-  - npm test
+  - xvfb-run polymer test 
 before_deploy:
-  - npm run build
+  - xvfb-run polymer build
 deploy:
   - provider: firebase
     edge: true
