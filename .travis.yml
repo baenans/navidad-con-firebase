@@ -1,19 +1,27 @@
 language: node_js
 sudo: required
 dist: trusty
-addons:
-  firefox: '46.0'
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
 node_js:
   - '6'
-  - '5'
-  - '4'
-before_script:
-  - npm install -g bower polymer-cli
+cache:
+  directories:
+    - node_modules
+branches:
+  except:
+    - /^v\d/
+install:
+  - npm install
+  - npm install -g bower
   - bower install
 script:
-  - xvfb-run polymer test
+  - npm test
+before_deploy:
+  - npm run build
+deploy:
+  - provider: firebase
+    edge: true
+    skip_cleanup: true
+    project: navidad-con-firebase
+    token: $FIREBASE_TOKEN
+    on:
+      branch: master

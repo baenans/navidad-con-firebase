@@ -1,0 +1,23 @@
+{
+  "name": "navidad-con-firebase",
+  "version": "1.0.0",
+  "description": "Landing page for Navidad con Firebase",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "polymer test",
+    "build": "polymer build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baenans/navidad-con-firebase.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baenans/navidad-con-firebase/issues"
+  },
+  "homepage": "https://navidadconfirebase.es"
+}
