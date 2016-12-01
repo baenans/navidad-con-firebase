@@ -181,7 +181,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <template 
         is="dom-repeat"
         items="[[bits]]"
-        as="bit">
+        as="bit"
+        sort="_sort">
 
         <bit-element 
           bit="[[bit]]">
@@ -286,6 +287,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
       },
+
+      _sort: function(a, b) {
+        // usign the $key attribute of firebase
+        // to inversely sort the bits
+        return a.$key > b.$key ? -1 : 1;
+      }
 
     });
   </script>
