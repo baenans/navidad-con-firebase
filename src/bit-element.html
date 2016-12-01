@@ -82,20 +82,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         img{
           max-width: 100%;
+          width: 200px;
         }
       
       }
     </style>
 
     <div id="wrapper">
-      <div id="image-holder"><img src="[[bit.img]]"></div>
+      <div id="image-holder"><img src="[[bit.img]]" alt="[[bit.titulo]]"></div>
       <div id="contenido">
         <div id="title">[[bit.titulo]]</div>
         <div id="date">[[bit.fecha]]</div>
         <div>[[bit.texto]]</div>
       </div>
     </div>
-    <a href="[[bit.link]]"><paper-button raised>Call for action</paper-button></a>
+    <a href="[[bit.link]]"><paper-button raised>VER CONTENIDO</paper-button></a>
 
   </template>
 
