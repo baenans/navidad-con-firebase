@@ -54,8 +54,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       header{
         text-align: center;
         padding: 20px 150px;
+        margin: 0 auto;
         font-size: 25px;
         font-weight: 100; 
+        max-width: 710px;
       }
 
       #magic-queens{
@@ -159,11 +161,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <h1>Navidad con Firebase</h1>
     <header>
-      <div>
-        [image goes here]
-      </div>
-
-      <p id="header-text">
+      <p>
         Presta atención en diciembre para aprender Firebase con Carlos, Jeff, Paola y Kike – tus <i>reyes mágicos</i> del desarrollo.
       </p>
 
@@ -263,7 +261,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         kings: {
           type: Array,
           value: function(){
-            return [] /*[
+            return [
               {
                 nombre: 'Carlos Azaustre',
                 puesto: 'CTO en Chefly',
@@ -283,30 +281,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 nombre: 'Kike García',
                 puesto: '',
                 imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fkike-garcia.jpg?alt=media&token=a5f13310-c4d0-448c-ac91-87241aee93b5'
-              },
-              {
-                nombre: 'Gloria Bueno',
-                puesto: '',
-                imagen: 'https://firebasestorage.googleapis.com/v0/b/navidad-con-firebase.appspot.com/o/profiles%2Fgloria-bueno.jpg?alt=media&token=cc62b294-42f0-496c-9e9e-0cbeb9392646'
-              },
-            ];*/
+              }
+            ];
           }
         }
       },
-
-      observers: [
-        '_kingsChanged(kings.*)'
-
-      ],
-
-      _kingsChanged: function(o){
-        console.log(this.kings);
-
-      },
-
-      ready: function(){
-
-      }
 
     });
   </script>
