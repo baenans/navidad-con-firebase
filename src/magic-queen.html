@@ -31,12 +31,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 120px;
         border-radius: 50%;
       }
+
+      a,
+      a:link,
+      a:active{
+        text-decoration: none;
+        color: #FFA000;
+        font-style: italic;
+      }
+
+      a:hover{
+        color: #FFA000;
+      }
     </style>
 
     <img src="[[data.imagen]]"></img>
     <div id="name">[[data.nombre]]</div>
     <div id="position">[[data.puesto]]</div>
-    <div>Twitter, G+, Linkedin</div>
+    <div><a href="https://www.twitter.com/[[data.twitter]]">@[[data.twitter]]</a></div>
     
   </template>
   <script>
