@@ -99,13 +99,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div>[[bit.texto]]</div>
       </div>
     </div>
-    <a href="[[bit.link]]"><paper-button raised>VER CONTENIDO</paper-button></a>
+    <a href="[[bit.link]]" on-tap="_clickBit"><paper-button raised>VER CONTENIDO</paper-button></a>
 
   </template>
 
   <script>
     Polymer({
-      is: 'bit-element'
+      is: 'bit-element',
+
+      _clickBit: function(){
+        if (window.ga){
+          ga('send', 'event', 'bits', 'click', 'view ' + this.bit.titulo);
+        }
+      }
     });
   </script>
 </dom-module>

@@ -167,10 +167,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <div id="c4as">
         <a href="https://g.co/firebase/bits">
-          <paper-button raised>Documentación</paper-button>
+          <paper-button raised on-tap="_clickDocumentation">Documentación</paper-button>
         </a>
         <a href="https://g.co/codelabs/firebasebits">
-          <paper-button raised>Codelabs</paper-button>
+          <paper-button raised on-tap="_clickCodelabs">Codelabs</paper-button>
         </a>
       </div>
 
@@ -277,6 +277,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // usign the $key attribute of firebase
         // to inversely sort the bits
         return a.$key > b.$key ? -1 : 1;
+      },
+
+      _clickCodelabs: function(){
+        if (window.ga){
+          ga('send', 'event', 'fb-button', 'click', 'codelabs');
+        }
+      },
+
+      _clickDocumentation: function(){
+        if (window.ga){
+          ga('send', 'event', 'fb-button', 'click', 'documentation');
+        }
       }
 
     });
