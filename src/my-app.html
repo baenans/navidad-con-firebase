@@ -19,6 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-app.html">
@@ -35,14 +36,60 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
 
+
         display: block;
       }
+      .flex-horizontal {
+        @apply(--layout-horizontal);
+      }
+      .flexchild {
+        @apply(--layout-flex);
+      }
+      .flex-vertical {
+        @apply(--layout-vertical);
+      }
+      .flex-vertical-txt {
+        @apply(--layout-vertical);
+        height: 320px;
+      }
+      .flexchild-vertical {
+        @apply(--layout-flex);
+      }
+      .app-shell-0 > *.app-shell {
+        ;
+      }
 
-      h1{
-        text-align: center;
-        font-size: 45px;
-        font-weight: 100;
-        margin-bottom: 0px;
+      .app-shell-0 {
+        display: block;
+        margin: 0;
+        height: 50vh;
+      }
+
+      .app-shell-0 .toolbar.app-shell {
+        position: absolute;
+        width: 100%;
+        height: 320px;
+        background: -webkit-linear-gradient(281deg,#1B9F7C 40%,#96eac9 100%);
+        background: linear-gradient(169deg,#1B9F7C 40%,#96eac9 100%);
+        background-color: #1B9F7C;
+      }
+
+      .heading {
+        font: 300 34px/40px Roboto,sans-serif;
+        letter-spacing: -.01em;
+        color: #fff;
+        font-size: 40px;
+        font-weight: 300;
+        line-height: 52px;
+        margin: 0;
+        padding-top: 88px;
+      }
+      .sub-heading {
+        color: #fff;
+        font-size: 20px;
+        line-height: 28px;
+        margin: 16px 0 32px;
+        max-width: 440px;
       }
 
       h2{
@@ -56,7 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 20px 150px;
         margin: 0 auto;
         font-size: 25px;
-        font-weight: 100; 
+        font-weight: 100;
         max-width: 710px;
       }
 
@@ -74,13 +121,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       #c4as{
-        margin: 50px 0;
+        margin: 20px 0;
+        text-align: center;
       }
       a,
       a:link,
       a:active,
       a:hover{
-        color: #FFA000;
+        color: #FFCA28;
       }
 
       #c4as a,
@@ -92,8 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 500;
       }
 
-      main{
-        text-align: center;
+      main, .header-container{
         max-width: 800px;
         margin: 0 auto;
       }
@@ -124,7 +171,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           text-align: center;
           padding: 20px 60px;
           font-size: 20px;
-          font-weight: 100; 
+          font-weight: 100;
         }
 
         #magic-queens{
@@ -138,7 +185,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <firebase-app 
+    <firebase-app
       name="navidad-con-firebase"
       database-url="https://navidad-con-firebase.firebaseio.com"
       auth-domain="navidad-con-firebase.firebaseapp.com"
@@ -151,7 +198,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       path="/kings"
       data="{{kings}}">
     </firebase-query>
-    
+
     <firebase-query
       id="bits-query"
       app-name="navidad-con-firebase"
@@ -159,37 +206,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       data="{{bits}}">
     </firebase-query>
 
-    <h1>🎄 Navidad con Firebase 🎁</h1>
-    <header>
-      <p>
-        Presta atención en diciembre para aprender Firebase con Carlos, Jeff, Paola y Kike – tus <i>reyes mágicos</i> del desarrollo.
-      </p>
+<app-shell class="x-scope app-shell-0">
 
-      <div id="c4as">
-        <a href="https://g.co/firebase/bits">
-          <paper-button raised on-tap="_clickDocumentation">Documentación</paper-button>
-        </a>
-        <a href="https://g.co/codelabs/firebasebits">
-          <paper-button raised on-tap="_clickCodelabs">Codelabs</paper-button>
-        </a>
+  <div class="toolbar style-scope app-shell">
+    <div class="header-container flex-horizontal">
+
+      <div class="flexchild">
+        <div class="flex-vertical">
+          <div class="flex-vertical-txt">
+            <p class ="heading">🎄 Navidad con Firebase 🎁</p>
+            <p class="sub-heading">Presta atención en diciembre para aprender Firebase con Carlos, Jeff, Paola y Kike – tus <i>reyes mágicos</i> del desarrollo.</p>
+          </div>
+          <div class="flexchild-vertical">
+            <div id="c4as">
+                <a href="https://g.co/firebase/bits">
+                  <paper-button raised on-tap="_clickDocumentation">Documentación</paper-button>
+                </a>
+                <a href="https://g.co/codelabs/firebasebits">
+                  <paper-button raised on-tap="_clickCodelabs">Codelabs</paper-button>
+                </a>
+              </div>
+            </div>
+        </div>
       </div>
+      <div>
+        <img class="rey1" src="/images/mago1_400px.png">
+      </div>
+    </div>
+</div>
 
-      <div class="hashtag">#navidadconfirebase</div>
-    </header>
+</app-shell>
 
-    <main>
-      <template 
+<main>
+      <template
         is="dom-repeat"
         items="[[bits]]"
         as="bit"
         sort="_sort">
 
-        <bit-element 
+        <bit-element
           bit="[[bit]]">
         </bit-element>
-      
+
       </template>
-        
+
 
     </main>
 
@@ -202,9 +262,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <magic-queen
           data="[[king]]"></magic-queen>
-          
+
       </template>
-      
+
     </div>
 
     <footer>
@@ -224,7 +284,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <img alt="Twitter" src="/images/twitter.png">
           </a>
       </div>
-      
+
     </footer>
 
   </template>
